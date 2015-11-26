@@ -1,0 +1,207 @@
+@{
+    ViewBag.Title = "用户信息表》明细页面";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        InitControl();
+    })
+    //得到一个对象实体
+    function InitControl() {
+        if (!!GetQuery('KeyValue')) {
+            AjaxJson("/CommonModule/Base_User/SetForm", { KeyValue: GetQuery('KeyValue') }, function (data) {
+                SetWebControls(data);
+            });
+        }
+    }
+</script>
+<form id="form1" style="margin: 1px">
+    <table class="form">
+        <tr>
+            <th class='formTitle'>用户主键：</th>
+            <td class='formValue'>
+                <label id="UserId" />
+            </td>
+            <th class='formTitle'>公司主键：</th>
+            <td class='formValue'>
+                <label id="CompanyId" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>部门主键：</th>
+            <td class='formValue'>
+                <label id="DepartmentId" />
+            </td>
+            <th class='formTitle'>内部用户：</th>
+            <td class='formValue'>
+                <label id="InnerUser" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>用户编码：</th>
+            <td class='formValue'>
+                <label id="Code" />
+            </td>
+            <th class='formTitle'>登录账户：</th>
+            <td class='formValue'>
+                <label id="Account" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>登录密码：</th>
+            <td class='formValue'>
+                <label id="Password" />
+            </td>
+            <th class='formTitle'>密码秘钥：</th>
+            <td class='formValue'>
+                <label id="Secretkey" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>姓名：</th>
+            <td class='formValue'>
+                <label id="RealName" />
+            </td>
+            <th class='formTitle'>姓名拼音：</th>
+            <td class='formValue'>
+                <label id="Spell" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>性别：</th>
+            <td class='formValue'>
+                <label id="Gender" />
+            </td>
+            <th class='formTitle'>出生日期：</th>
+            <td class='formValue'>
+                <label id="Birthday" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>手机：</th>
+            <td class='formValue'>
+                <label id="Mobile" />
+            </td>
+            <th class='formTitle'>电话：</th>
+            <td class='formValue'>
+                <label id="Telephone" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>QQ号码：</th>
+            <td class='formValue'>
+                <label id="OICQ" />
+            </td>
+            <th class='formTitle'>电子邮件：</th>
+            <td class='formValue'>
+                <label id="Email" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>最后修改密码日期：</th>
+            <td class='formValue'>
+                <label id="ChangePasswordDate" />
+            </td>
+            <th class='formTitle'>单点登录标识：</th>
+            <td class='formValue'>
+                <label id="OpenId" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>登录次数：</th>
+            <td class='formValue'>
+                <label id="LogOnCount" />
+            </td>
+            <th class='formTitle'>第一次访问时间：</th>
+            <td class='formValue'>
+                <label id="FirstVisit" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>上一次访问时间：</th>
+            <td class='formValue'>
+                <label id="PreviousVisit" />
+            </td>
+            <th class='formTitle'>最后访问时间：</th>
+            <td class='formValue'>
+                <label id="LastVisit" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>审核状态：</th>
+            <td class='formValue'>
+                <label id="AuditStatus" />
+            </td>
+            <th class='formTitle'>审核员主键：</th>
+            <td class='formValue'>
+                <label id="AuditUserId" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>审核员：</th>
+            <td class='formValue'>
+                <label id="AuditUserName" />
+            </td>
+            <th class='formTitle'>审核时间：</th>
+            <td class='formValue'>
+                <label id="AuditDateTime" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>是否在线：</th>
+            <td class='formValue'>
+                <label id="Online" />
+            </td>
+            <th class='formTitle'>备注：</th>
+            <td class='formValue'>
+                <label id="Remark" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>有效：</th>
+            <td class='formValue'>
+                <label id="Enabled" />
+            </td>
+            <th class='formTitle'>排序码：</th>
+            <td class='formValue'>
+                <label id="SortCode" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>删除标记：</th>
+            <td class='formValue'>
+                <label id="DeleteMark" />
+            </td>
+            <th class='formTitle'>创建时间：</th>
+            <td class='formValue'>
+                <label id="CreateDate" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>创建用户主键：</th>
+            <td class='formValue'>
+                <label id="CreateUserId" />
+            </td>
+            <th class='formTitle'>创建用户：</th>
+            <td class='formValue'>
+                <label id="CreateUserName" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>修改时间：</th>
+            <td class='formValue'>
+                <label id="ModifyDate" />
+            </td>
+            <th class='formTitle'>修改用户主键：</th>
+            <td class='formValue'>
+                <label id="ModifyUserId" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>修改用户：</th>
+            <td class='formValue'>
+                <label id="ModifyUserName" />
+            </td>
+        </tr>
+    </table>
+</form>

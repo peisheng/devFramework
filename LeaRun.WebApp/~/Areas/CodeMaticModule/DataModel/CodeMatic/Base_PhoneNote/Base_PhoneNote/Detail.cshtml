@@ -1,0 +1,87 @@
+@{
+    ViewBag.Title = "手机短信表》明细页面";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        InitControl();
+    })
+    //得到一个对象实体
+    function InitControl() {
+        if (!!GetQuery('KeyValue')) {
+            AjaxJson("/CommonModule/Base_PhoneNote/SetForm", { KeyValue: GetQuery('KeyValue') }, function (data) {
+                SetWebControls(data);
+            });
+        }
+    }
+</script>
+<form id="form1" style="margin: 1px">
+    <table class="form">
+        <tr>
+            <th class='formTitle'>手机短信主键：</th>
+            <td class='formValue'>
+                <label id="PhoneNoteId" />
+            </td>
+            <th class='formTitle'>手机号码：</th>
+            <td class='formValue'>
+                <label id="PhonenNumber" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>发送内容：</th>
+            <td class='formValue'>
+                <label id="SendContent" />
+            </td>
+            <th class='formTitle'>发送时间：</th>
+            <td class='formValue'>
+                <label id="SendTime" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>发送状态：</th>
+            <td class='formValue'>
+                <label id="SendStatus" />
+            </td>
+            <th class='formTitle'>设备名称：</th>
+            <td class='formValue'>
+                <label id="DeviceName" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>Remark：</th>
+            <td class='formValue'>
+                <label id="Remark" />
+            </td>
+            <th class='formTitle'>有效：</th>
+            <td class='formValue'>
+                <label id="Enabled" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>排序码：</th>
+            <td class='formValue'>
+                <label id="SortCode" />
+            </td>
+            <th class='formTitle'>删除标记：</th>
+            <td class='formValue'>
+                <label id="DeleteMark" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>创建时间：</th>
+            <td class='formValue'>
+                <label id="CreateDate" />
+            </td>
+            <th class='formTitle'>创建用户主键：</th>
+            <td class='formValue'>
+                <label id="CreateUserId" />
+            </td>
+        </tr>
+        <tr>
+            <th class='formTitle'>创建用户：</th>
+            <td class='formValue'>
+                <label id="CreateUserName" />
+            </td>
+        </tr>
+    </table>
+</form>

@@ -1,0 +1,85 @@
+@{
+    ViewBag.Title = "用户信息表";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        GetGrid();
+    })
+    //加载表格
+    function GetGrid() {
+        $("#gridTable").jqGrid({
+        url: "@Url.Content("~/CommonModule/Base_User/GridPageJson")",
+        datatype: "json",
+        height: $(window).height() - 149,
+        autowidth: true,
+        colModel: [
+                { label: '用户主键', name: 'UserId', index: 'UserId', width: 0, align: 'left',sortable: true  },
+                { label: '公司主键', name: 'CompanyId', index: 'CompanyId', width: 0, align: 'left',sortable: true  },
+                { label: '部门主键', name: 'DepartmentId', index: 'DepartmentId', width: 0, align: 'left',sortable: true  },
+                { label: '内部用户', name: 'InnerUser', index: 'InnerUser', width: 0, align: 'left',sortable: true  },
+                { label: '用户编码', name: 'Code', index: 'Code', width: 0, align: 'left',sortable: true  },
+                { label: '登录账户', name: 'Account', index: 'Account', width: 0, align: 'left',sortable: true  },
+                { label: '登录密码', name: 'Password', index: 'Password', width: 0, align: 'left',sortable: true  },
+                { label: '密码秘钥', name: 'Secretkey', index: 'Secretkey', width: 0, align: 'left',sortable: true  },
+                { label: '姓名', name: 'RealName', index: 'RealName', width: 0, align: 'left',sortable: true  },
+                { label: '姓名拼音', name: 'Spell', index: 'Spell', width: 0, align: 'left',sortable: true  },
+                { label: '性别', name: 'Gender', index: 'Gender', width: 0, align: 'left',sortable: true  },
+                { label: '出生日期', name: 'Birthday', index: 'Birthday', width: 0, align: 'left',sortable: true  },
+                { label: '手机', name: 'Mobile', index: 'Mobile', width: 0, align: 'left',sortable: true  },
+                { label: '电话', name: 'Telephone', index: 'Telephone', width: 0, align: 'left',sortable: true  },
+                { label: 'QQ号码', name: 'OICQ', index: 'OICQ', width: 0, align: 'left',sortable: true  },
+                { label: '电子邮件', name: 'Email', index: 'Email', width: 0, align: 'left',sortable: true  },
+                { label: '最后修改密码日期', name: 'ChangePasswordDate', index: 'ChangePasswordDate', width: 0, align: 'left',sortable: true  },
+                { label: '单点登录标识', name: 'OpenId', index: 'OpenId', width: 0, align: 'left',sortable: true  },
+                { label: '登录次数', name: 'LogOnCount', index: 'LogOnCount', width: 0, align: 'left',sortable: true  },
+                { label: '第一次访问时间', name: 'FirstVisit', index: 'FirstVisit', width: 0, align: 'left',sortable: true  },
+                { label: '上一次访问时间', name: 'PreviousVisit', index: 'PreviousVisit', width: 0, align: 'left',sortable: true  },
+                { label: '最后访问时间', name: 'LastVisit', index: 'LastVisit', width: 0, align: 'left',sortable: true  },
+                { label: '审核状态', name: 'AuditStatus', index: 'AuditStatus', width: 0, align: 'left',sortable: true  },
+                { label: '审核员主键', name: 'AuditUserId', index: 'AuditUserId', width: 0, align: 'left',sortable: true  },
+                { label: '审核员', name: 'AuditUserName', index: 'AuditUserName', width: 0, align: 'left',sortable: true  },
+                { label: '审核时间', name: 'AuditDateTime', index: 'AuditDateTime', width: 0, align: 'left',sortable: true  },
+                { label: '是否在线', name: 'Online', index: 'Online', width: 0, align: 'left',sortable: true  },
+                { label: '备注', name: 'Remark', index: 'Remark', width: 0, align: 'left',sortable: true  },
+                { label: '有效', name: 'Enabled', index: 'Enabled', width: 0, align: 'left',sortable: true  },
+                { label: '排序码', name: 'SortCode', index: 'SortCode', width: 0, align: 'left',sortable: true  },
+                { label: '删除标记', name: 'DeleteMark', index: 'DeleteMark', width: 0, align: 'left',sortable: true  },
+                { label: '创建时间', name: 'CreateDate', index: 'CreateDate', width: 0, align: 'left',sortable: true  },
+                { label: '创建用户主键', name: 'CreateUserId', index: 'CreateUserId', width: 0, align: 'left',sortable: true  },
+                { label: '创建用户', name: 'CreateUserName', index: 'CreateUserName', width: 0, align: 'left',sortable: true  },
+                { label: '修改时间', name: 'ModifyDate', index: 'ModifyDate', width: 0, align: 'left',sortable: true  },
+                { label: '修改用户主键', name: 'ModifyUserId', index: 'ModifyUserId', width: 0, align: 'left',sortable: true  },
+                { label: '修改用户', name: 'ModifyUserName', index: 'ModifyUserName', width: 0, align: 'left',sortable: true  },
+        ],
+        pager: "#gridPager",
+        sortname: '',
+        sortorder: 'desc',
+        rownumbers: true,
+        shrinkToFit: false,
+        gridview: true,
+    });
+}
+    //刷新
+    function windowload() {
+        $("#gridTable").trigger("reloadGrid"); //重新载入
+        
+    }
+</script>
+<div class="leftline rightline QueryArea" style="margin: 1px; margin-top: 0px; margin-bottom: 0px;">
+    <table border="0" class="form-find" style="height: 45px;">
+        <tr>
+            <th>关键字：</th>
+            <td>
+                <input id="keywords" type="text" class="txt" style="width: 200px" />
+            </td>
+            <td>
+                <input id="btnSearch" type="button" class="btnSearch" value="搜 索" onclick="btn_Search()" />
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="topline rightline" style="margin: 1px; margin-top: -1px;">
+    <table id="gridTable"></table>
+    <div id="gridPager"></div>
+</div>
