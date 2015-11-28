@@ -191,7 +191,8 @@
         window.setTimeout(function () {
             //获取系统模块 信息:
             var ModuleId = ""; $('#AccessTree .bbit-tree-node-cb').each(function () {
-                if ($(this).attr('src') == '/Content/Scripts/tree/Images/icons/checkbox_1.gif') {
+                if ($(this).attr('src').indexOf('/Content/Scripts/tree/Images/icons/checkbox_1.gif') > -1) {
+                    debugger;
                     var _ModuleId = $(this).attr('id').substring(11).replace(/_/g, "-");
                     _ModuleId = _ModuleId.substring(0, _ModuleId.length - 3);
                     ModuleId += _ModuleId + ",";
